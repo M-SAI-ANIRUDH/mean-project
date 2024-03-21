@@ -1,0 +1,15 @@
+.main {
+  padding: 20px;
+  .inner-one {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: grey;
+    .inner-one-b {
+      background-color: white;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+  }
+}

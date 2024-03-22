@@ -4,6 +4,7 @@ import { PostCreateComponent } from './posts/posts-create/post-create.component'
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { postData } from './models/post-data';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,8 @@ import { postData } from './models/post-data';
     PostCreateComponent,
     HeaderComponent,
     PostListComponent,
+    HttpClientModule,
+    PostCreateComponent
   ],
 })
 export class AppComponent {

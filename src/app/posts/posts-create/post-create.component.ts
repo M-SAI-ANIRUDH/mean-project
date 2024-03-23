@@ -25,10 +25,11 @@ export class PostCreateComponent {
     // @Output() singlePost = new EventEmitter<postData>();
     constructor(public postService: postService){}
     savePost(postForm:NgForm) {
-        let  singlePost : postData = {};
-        singlePost.id = null;
-        singlePost.post = postForm.value.post;
-        singlePost.title = postForm.value.title;
+        let  singlePost : postData = {
+            id : '',
+            content : postForm.value.content,
+            title : postForm.value.title
+        };
         // this.singlePost.emit(singlePost);
         this.postService.addPost(singlePost);
     }

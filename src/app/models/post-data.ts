@@ -1,5 +1,5 @@
 export interface postData {
-    id?: number | null
-    title?: string,
-    post?: string
+    id: string;
+    title: string;
+    content: string;
 }

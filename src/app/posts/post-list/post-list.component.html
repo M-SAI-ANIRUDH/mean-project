@@ -4,10 +4,14 @@
     <mat-expansion-panel-header>
       <mat-panel-title> {{post.title}} </mat-panel-title>
       <mat-panel-description>
-        {{post.post}}
+        {{post.content}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>I'm visible because I am open</p>
+    <mat-action-row>
+      <button (click)="deletePost(post.id)" style="margin: 5px;">delete</button>
+      <button style="margin: 5px;">edit</button>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
 <div *ngIf="posts.length==0">No Posts Yet</div>

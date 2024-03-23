@@ -14,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class PostListComponent implements OnInit{
   panelOpenState = false;
-
   posts : postData[] = [];
 
   constructor(public postService : postService){}
@@ -24,5 +23,9 @@ export class PostListComponent implements OnInit{
       .subscribe((res)=>{
         this.posts = res
       })
+  }
+
+  deletePost(id : string) {
+    this.postService.deletePost(id);
   }
 }

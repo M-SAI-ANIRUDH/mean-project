@@ -1,13 +1,19 @@
-<mat-toolbar color="accent">
+<mat-toolbar color="accent" style="display: flex; justify-content: space-between;">
+  <div style="display: flex;">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>MEAN Stack Application</span>
+    <div style="display: flex; align-items: center;">
+      <span style="display: flex;">MEAN stack posting app.</span>
+    </div>
+  </div>
+  <div>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+    <button mat-button routerLink='/create' routerLinkActive="mat-accent">
+      <span>create</span>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+    <button mat-button routerLink='/' routerLinkActive="mat-accent">
+      <span>posts</span>
     </button>
+  </div>
   </mat-toolbar>

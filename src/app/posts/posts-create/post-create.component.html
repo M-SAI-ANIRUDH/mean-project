@@ -1,6 +1,7 @@
 <div class="main">
     <mat-card class="inner-one">
         <form action="" style="margin: 5px;" (submit)="savePost(postForm)" #postForm="ngForm">
+            <label>Title :</label>
             <mat-form-field style="margin: 5px;">
                 <input name="title" 
                     type="textarea" 
@@ -10,6 +11,7 @@
                     minlength="2">
                 <mat-error *ngIf="true">asdsa</mat-error>
             </mat-form-field>
+            <label>Content :</label>
             <mat-form-field style="margin: 5px;">
                 <textarea name="content" type="textarea" matInput ngModel></textarea>
             </mat-form-field>

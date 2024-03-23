@@ -4,11 +4,12 @@ import {NgIf, NgFor} from '@angular/common';
 import { postData } from './../../models/post-data'
 import { postService } from '../../services/post-call-api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [MatExpansionModule, NgFor, NgIf, HttpClientModule],
+  imports: [MatExpansionModule, NgFor, NgIf, HttpClientModule, MatButton],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.css'
 })

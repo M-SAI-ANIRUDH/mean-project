@@ -1,20 +1,31 @@
+<mat-progress-bar mode="indeterminate" *ngIf="!editmodeFetched && mode === 'edit'"></mat-progress-bar>
 <div class="main">
-    <mat-card class="inner-one">
-        <form action="" style="margin: 5px;" (submit)="savePost(postForm)" #postForm="ngForm">
-            <label>Title :</label>
-            <mat-form-field style="margin: 5px;">
-                <input name="title" 
-                    type="textarea" 
-                    matInput 
-                    ngModel 
-                    #title="ngModel" 
-                    minlength="2">
-                <mat-error *ngIf="true">asdsa</mat-error>
-            </mat-form-field>
-            <label>Content :</label>
-            <mat-form-field style="margin: 5px;">
-                <textarea name="content" type="textarea" matInput ngModel></textarea>
-            </mat-form-field>
+    <mat-card class="inner-one" *ngIf="editmodeFetched && mode === 'edit' || mode === 'create'">
+        <form [formGroup]="postForm" style="margin: 5px;" (submit)="savePost()">
+            <div>
+                <label style="color: white;font-style: italic;">Title :</label>
+                <div></div>
+                <mat-form-field style="margin: 5px; width: 100%;">
+                    <input name="title" type="textarea" matInput formControlName="title">
+                    <mat-error *ngIf="true" style="color: rgb(231, 231, 231);">asdsa</mat-error>
+                </mat-form-field>
+            </div>
+            <div style="display: flex; padding:5px; gap: 50px; align-items: center;">
+                <div>
+                    <button mat-raised-button (click)="filepicker.click()" type="button" style="background: transparent; border: solid 1px; color: white; margin-bottom: 15px; border-radius: 10px;">Upload Image</button>
+                    <input type="file" hidden="true" #filepicker (change)="filePicked($event)">
+                </div>
+                <div class="image-preview">
+                    <img [src]="imageURL" [alt]="postForm.value.title">
+                </div>
+            </div>
+            <div>
+                <label style="color: white;font-style: italic; margin-left: 10px;">Content :</label>
+                <div></div>
+                <mat-form-field style="margin: 5px; width: 100%;">
+                    <textarea name="content" type="textarea" matInput formControlName="content"></textarea>
+                </mat-form-field>
+            </div>
             <button class="inner-one-b" type="submit" mat-raised-button>Save Post</button>
         </form>
     </mat-card>

@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
   );
   next();
 });
@@ -34,12 +34,21 @@ app.post("/api/posts", (req, res, next) => {
     title: req.body.title,
     content: req.body.content
   })
-  console.log(post);
   post.save();
   res.status(200).json({
     message : "success",
     postId : post._id
 });
+});
+
+app.get("/api/posts/:id", (req, res, next) => {
+  Post.findById(req.params.id)
+    .then(post => {
+      res.status(200).json({
+        message : "successful fetched post details",
+        post : post
+      })
+    })
 });
 
 app.get("/api/posts", (req, res, next) => {
@@ -55,12 +64,22 @@ app.get("/api/posts", (req, res, next) => {
 app.delete("/api/posts:id", (req, res, next) => {
   Post.deleteOne({
     _id : req.params.id
-  }).then(res => {
-    console.log(res)
+  }).then(r => {
+    res.status(200).json({
+      message: 'message deleted',
+      id : res._id
+    })
   });
-  res.status(200).json({
-    message: 'message deleted',
-    id : res._id
+});
+
+app.put("/api/posts/:id", (req, res, next) => {
+  // console.log(req.params.id)
+  Post.updateOne({_id : req.params.id},{
+    _id : req.params.id,
+    title : req.body.title,
+    content : req.body.content
+  }).then((resp) => {
+    res.status(200).json({message : "successfulOne"})
   })
 });
 

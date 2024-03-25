@@ -1,15 +1,21 @@
 .main {
   padding: 20px;
+  display: flex;
+  justify-content: center;
   .inner-one {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    background-color: rgb(182, 181, 181);
+    padding: 10px 20px;
+    width: calc(66%);
+    background-color: #FF4081;
     .inner-one-b {
       background-color: white;
       border-radius: 5px;
       margin-left: 5px;
+    }
+    .image-preview {
+      img {
+        max-width: 250px;
+      }
     }
   }
 }

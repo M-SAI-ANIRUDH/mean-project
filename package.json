@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "mongoose": "^8.2.3",
+    "ngx-scrollbar": "^14.0.0",
     "node": "^21.7.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

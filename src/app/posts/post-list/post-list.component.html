@@ -1,32 +1,44 @@
-<mat-accordion multi *ngIf="posts.length>0" 
-style="padding: 0px 0 10px 0;
-overflow: auto;
-display: flex;
-flex-direction: column;">
-  <!--padding: 0px 0 10px 0;
-overflow: auto;
-display: flex;
-flex-direction: column;
-
-"padding: 0px 0 10px 0;
-  overflow: auto;
-  display: flex;
-  height: 400px;
-  flex-direction: column;
-  flex-wrap: wrap;"-->
+<mat-progress-bar mode="indeterminate" *ngIf="!postsFetched"></mat-progress-bar>
+<mat-accordion
+  multi
+  *ngIf="posts.length > 0 && postsFetched"
+  style="
+    padding: 0px 0 10px 0;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(3, calc(100% / 3));">
   <mat-expansion-panel
-    *ngFor="let post of posts" style="margin: 20px;">
+    *ngFor="let post of posts"
+    style="margin: 10px 20px; height: fit-content"
+    expanded="true"
+  >
     <mat-expansion-panel-header>
-      <mat-panel-title> {{post.title}} </mat-panel-title>
+      <mat-panel-title> {{ post.title }} </mat-panel-title>
       <mat-panel-description>
-        {{post.content}}
+        {{ post.content }}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>I'm visible because I am open</p>
-    <mat-action-row>
-      <button mat-button color="warn" (click)="deletePost(post.id)" style="margin: 0px 5px;">delete</button>
-      <button mat-button color="primary" style="margin: 0px 5px;">edit</button>
+    <mat-action-row style="padding: 10px">
+      <button
+        mat-button
+        color="warn"
+        (click)="deletePost(post.id)"
+        style="margin: 0px 5px"
+      >
+        delete
+      </button>
+      <a [routerLink]="['/edit/' + post.id]">
+        <button
+          mat-button
+          color="primary"
+          (click)="updatePost(post.id)"
+          style="margin: 0px 5px"
+        >
+          edit
+        </button>
+      </a>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<div *ngIf="posts.length==0">No Posts Yet</div>
+<div *ngIf="posts.length == 0 && postsFetched">No Posts Yet</div>
